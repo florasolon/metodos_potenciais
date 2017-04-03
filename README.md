@@ -1,4 +1,4 @@
-# Repositório da Florita 
+# Disciplina-metodos-potenciais
 
 Esse repositório é para acompanhar a
 [disciplina](https://github.com/birocoles/Disciplina-metodos-potenciais)
