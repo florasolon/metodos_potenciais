@@ -263,7 +263,7 @@ def plota_mapa(projecao, x, y, dado, area, unidade, titulo, cores, tamanho,
         projecao.drawmeridians(meridians)
     if estados == True:
         projecao.drawstates()
-	if bacia == True:
+	if basin == True:
 		projecao.readshapefile('C:/Users/flora/Google Drive/Python/EDI/shape/bacia/17','17.shp',linewidth=3)
     if perfis != None:
         for i in range(0,perfis.shape[0],2):
