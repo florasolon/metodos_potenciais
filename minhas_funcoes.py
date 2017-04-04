@@ -162,7 +162,7 @@ def estatistica(dado, unidade=None):
     return minimo, media, maximo, variacao
     
 def plota_mapa(projecao, x, y, dado, area, unidade, titulo, cores, tamanho,
-               delta, perfis=None, estados=None, bacia=None, escala=None, eixos=None):
+               delta, perfis=None, estados=None, basin=None, escala=None, eixos=None):
     '''
     Plota um mapa dos dados "dado", com coordenadas "x" e 
     "y" referidas a uma determinada projecao cartografica 
@@ -264,7 +264,7 @@ def plota_mapa(projecao, x, y, dado, area, unidade, titulo, cores, tamanho,
     if estados == True:
         projecao.drawstates()
 	if bacia == True:
-		projecao.drawbasin()
+		projecao.readshapefile('C:/Users/flora/Google Drive/Python/EDI/shape/bacia/17','17.shp',linewidth=3)
     if perfis != None:
         for i in range(0,perfis.shape[0],2):
             projecao.plot(perfis[i:i+2,0], perfis[i:i+2,1], 'o-k', linewidth=2)
