@@ -160,9 +160,17 @@ def estatistica(dado, unidade=None):
         print 'var. max.: %15.5f' % (variacao)
         
     return minimo, media, maximo, variacao
-    
+ 
+
+def drawstates(ax, shapefile='shp/BRA_adm_shp/BRA_adm0.shp'):
+        shp = m.readshapefile(shapefile, 'states', drawbounds=True)
+        for nshape, seg in enumerate(m.states):
+            poly = Polygon(seg, facecolor='0.75', edgecolor='k')
+            ax.add_patch(poly)
+ 
+ 
 def plota_mapa(projecao, x, y, dado, area, unidade, titulo, cores, tamanho,
-               delta, perfis=None, estados=None, basin=None, escala=None, eixos=None):
+               delta, perfis=None, estados=None, bacia=None, escala=None, eixos=None):
     '''
     Plota um mapa dos dados "dado", com coordenadas "x" e 
     "y" referidas a uma determinada projecao cartografica 
@@ -199,6 +207,7 @@ def plota_mapa(projecao, x, y, dado, area, unidade, titulo, cores, tamanho,
             primeiro perfil, as proximas duas contem os pontos
             que formam o segundo perfil e assim sucessivamente.
     estados: boolean - se for igual a True, plota o contorno dos estados.
+	bacia: boolean - se for igual a True, plota o contorno das bacias.
     escala: boolean - se for igual a True, plota a escala do mapa.
     eixos: boolean - se for igual a True, plota os eixos do mapa.
     
@@ -263,8 +272,8 @@ def plota_mapa(projecao, x, y, dado, area, unidade, titulo, cores, tamanho,
         projecao.drawmeridians(meridians)
     if estados == True:
         projecao.drawstates()
-	if basin == True:
-		projecao.readshapefile('C:/Users/flora/Google Drive/Python/EDI/shape/bacia/17','17.shp',linewidth=3)
+    if bacia == True:
+        projecao.readshapefile('shp/bacia/17','17.shp',linewidth=1)
     if perfis != None:
         for i in range(0,perfis.shape[0],2):
             projecao.plot(perfis[i:i+2,0], perfis[i:i+2,1], 'o-k', linewidth=2)
